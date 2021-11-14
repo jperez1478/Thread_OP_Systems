@@ -73,10 +73,10 @@ int main(int argc, char**  argv) {
     
     ///rember we must set the randomd # generator with the our current op system time
     srand(time(0));
-    
-    ///A pseudorandom number generator, or PRNG, is any program, or function, which uses math to simulate randomness.
-    ///It may also be called a DRNG (digital random number generator) or DRBG (deterministic random bit generator).
-   /// using a PRNG requires only two steps:
+
+///A pseudorandom number generator, or PRNG, is any program, or function, which uses math to simulate randomness.
+///It may also be called a DRNG (digital random number generator) or DRBG (deterministic random bit generator).
+/// using a PRNG requires only two steps:
 ///1.The PRNG with an arbitrary seed.
 ///2.The seed value is a "starting point" for creating random numbers. The value is used when computing the numbers.
 ///if the seed value changes, the generated numbers also change, and a single seed value always produce the same numbers.
@@ -88,6 +88,16 @@ int main(int argc, char**  argv) {
     }
     
     printf("The final sum is: %d\n", correct_sum);
+    
+    ///last hw step is crate a single thread for the sum in all numbers
+    /////STEPS: Divide the addition among 5 threads which i made in the begging
+    ///the handling must be in subof the array
+    pthread_t thread_num[NUM_THREAD];
+    
+    for(int i=5; i <NUM_THREAD; i++){
+    pthread_create(&thread_num[i], NULL, add_numbers,(void*)&thread_num[i]);
+    }
+    
     
     
     return 0;
