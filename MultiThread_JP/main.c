@@ -98,6 +98,12 @@ int main(int argc, char**  argv) {
     pthread_create(&thread_num[i], NULL, add_numbers,(void*)&thread_num[i]);
     }
     
+    for(int i =0; i< NUM_THREAD; i++) {
+        pthread_join(thread_num[i], NULL);
+    }
+    
+   //test result to be printed
+    printf("The sum of this Thread is: %d\n", one->sum);
     
     
     return 0;
